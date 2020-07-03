@@ -159,7 +159,7 @@ main()
       fi
 
       if $show_weather; then # weather
-          tmux set-option -ga status-right "#[fg=${dark_gray},bg=${orange}] #(cat $current_dir/../data/weather.txt) "
+          tmux set-option -ga status-right "#[fg=${dark_gray},bg=${orange}] #{wttr} "
       fi
 
       if $show_military; then # military time
