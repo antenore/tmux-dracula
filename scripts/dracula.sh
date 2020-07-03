@@ -63,9 +63,9 @@ main()
   fi
 
   # start weather script in background
-  if $show_weather; then
-    $current_dir/sleep_weather.sh $show_fahrenheit &
-  fi
+  #if $show_weather; then
+  #  $current_dir/sleep_weather.sh $show_fahrenheit &
+  #fi
   
   # sets refresh interval to every 5 seconds
   tmux set-option -g status-interval 5
@@ -119,8 +119,13 @@ main()
         powerbg=${cyan}
       fi
 
+      #if $show_weather; then # weather
+      #  tmux set-option -ga status-right "#[fg=${orange},bg=${powerbg},nobold,nounderscore,noitalics] ${right_sep}#[fg=${dark_gray},bg=${orange}] #(cat $current_dir/../data/weather.txt)"
+      #  powerbg=${orange}
+      #fi
+      
       if $show_weather; then # weather
-        tmux set-option -ga status-right "#[fg=${orange},bg=${powerbg},nobold,nounderscore,noitalics] ${right_sep}#[fg=${dark_gray},bg=${orange}] #(cat $current_dir/../data/weather.txt)"
+        tmux set-option -ga status-right "#{wttr}"
         powerbg=${orange}
       fi
 
