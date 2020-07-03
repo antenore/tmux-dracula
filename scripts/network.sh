@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-HOSTS="google.com github.com example.com"
+HOSTS="ibm.com reddit.com"
 
 get_ssid()
 {
@@ -37,7 +37,7 @@ main()
 {
 	network="Offline"
 	for host in $HOSTS; do
-	    if ping -q -c 1 -W 1 $host &>/dev/null; then
+	    if ping -q -c 1 -W 1 "$host" &>/dev/null; then
 		    network="$(get_ssid)"
 		    break
 	    fi
