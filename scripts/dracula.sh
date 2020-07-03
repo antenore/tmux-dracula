@@ -125,7 +125,7 @@ main()
       #fi
       
       if $show_weather; then # weather
-        tmux set-option -ga status-right "#{wttr}"
+        tmux set-option -ga status-right "[fg=${orange},bg=${powerbg},nobold,nounderscore,noitalics] ${right_sep}#[fg=${dark_gray},bg=${orange}] #{wttr}"
         powerbg=${orange}
       fi
 
