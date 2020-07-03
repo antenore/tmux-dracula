@@ -5,12 +5,12 @@ fahrenheit=$1
 
 load_request_params()
 {
-	
+
 	city=$(curl -s https://ipinfo.io/city 2> /dev/null)
 	region=$(curl -s https://ipinfo.io/region 2> /dev/null)
 	zip=$(curl -s https://ipinfo.io/postal 2> /dev/null | tail -1)
 	country_w_code=$(curl -w "\n%{http_code}\n" -s https://ipinfo.io/country 2> /dev/null)
-	country=`grep -Eo [a-zA-Z]+ <<< "$country_w_code"` 
+	country=`grep -Eo [a-zA-Z]+ <<< "$country_w_code"`
 	exit_code=`grep -Eo [0-9]{3} <<< "$country_w_code"`
 
 	region_code_url=http://www.ip2country.net/ip2country/region_code.html
@@ -36,7 +36,7 @@ get_temp()
 		echo $(( ($(weather_information | grep 'deg;F' | cut -d '&' -f 1) - 32) * 5 / 9 ))
 	fi
 }
-forecast_unicode() 
+forecast_unicode()
 {
 	forecast=$(weather_information | head -n 1)
 
@@ -51,7 +51,7 @@ forecast_unicode()
 	else
 		echo '☀ '
 	fi
-	
+
 
 }
 #get weather display if in US
